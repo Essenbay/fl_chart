@@ -1266,6 +1266,7 @@ class LineTouchTooltipData with EquatableMixin {
     this.showOnTopOfTheChartBoxArea = false,
     this.rotateAngle = 0.0,
     this.tooltipBorder = BorderSide.none,
+    this.showBottomArrow = false,
   });
 
   /// The tooltip background color.
@@ -1307,6 +1308,9 @@ class LineTouchTooltipData with EquatableMixin {
   /// The tooltip border color.
   final BorderSide tooltipBorder;
 
+  ///Shows arrow in the bottom of tooltip
+  final bool showBottomArrow;
+
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
@@ -1323,6 +1327,7 @@ class LineTouchTooltipData with EquatableMixin {
         showOnTopOfTheChartBoxArea,
         rotateAngle,
         tooltipBorder,
+        showBottomArrow,
       ];
 }
 

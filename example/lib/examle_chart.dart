@@ -80,24 +80,6 @@ class _LinearChartWidgetState extends State<LinearChartWidget> {
     }
   }
 
-  late final purposeLine = LineChartBarData(
-      spots: [
-        FlSpot(
-          chartMinX,
-          widget.horizontalTarget!.toDouble(),
-        ),
-        FlSpot(
-          chartMaxX,
-          widget.horizontalTarget!.toDouble(),
-        ),
-      ],
-      showingIndicators: [chartMinX.toInt(), chartMaxX.toInt()],
-      dotData: FlDotData(show: false),
-      barWidth: 1,
-      show: false,
-      color: AppColors.primary,
-      dashArray: [5]);
-
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -130,8 +112,8 @@ class _LinearChartWidgetState extends State<LinearChartWidget> {
                   ),
                 ),
               ),
-              if (widget.horizontalTarget != null) purposeLine,
             ],
+            minX: chartMinX,
             maxY: chartMaxY,
             minY: chartMinY,
             maxX: chartMaxX,
@@ -139,21 +121,12 @@ class _LinearChartWidgetState extends State<LinearChartWidget> {
               show: true,
               verticalInterval: 1,
               drawHorizontalLine: false,
-              getDrawingVerticalLine: (value) => FlLine(
+              getDrawingVerticalLine: (value) => const FlLine(
                 color: AppColors.grey200,
                 strokeWidth: .5,
               ),
             ),
-            showingTooltipIndicators: [
-              // if (widget.horizontalTarget != null)
-              //   ShowingTooltipIndicators([
-              //     LineBarSpot(
-              //       LineChartBarData(),
-              //       2,
-              //       purposeLine.spots.first,
-              //     )
-              //   ]),
-            ],
+            showingTooltipIndicators: [],
             extraLinesData: ExtraLinesData(
               horizontalLines: [
                 if (widget.horizontalTarget != null)
@@ -179,7 +152,8 @@ class _LinearChartWidgetState extends State<LinearChartWidget> {
             lineTouchData: LineTouchData(
                 touchTooltipData: LineTouchTooltipData(
               tooltipBgColor: AppColors.blue600,
-              tooltipRoundedRadius: 15,
+              tooltipRoundedRadius: 10,
+              showBottomArrow: true,
               tooltipPadding:
                   const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               getTooltipItems: (touchedSpots) => touchedSpots
@@ -195,9 +169,10 @@ class _LinearChartWidgetState extends State<LinearChartWidget> {
                   .toList(),
             )),
             titlesData: FlTitlesData(
-              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              topTitles:
+                  const AxisTitles(sideTitles: SideTitles(showTitles: false)),
               rightTitles:
-                  AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  const AxisTitles(sideTitles: SideTitles(showTitles: false)),
               leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                       showTitles: true,

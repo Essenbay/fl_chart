@@ -1165,6 +1165,21 @@ class LineChartPainter extends AxisChartPainter<LineChartData> {
       topPosSeek += tp.height;
       topPosSeek += textsBelowMargin;
     }
+
+    //Draw bottom arrow
+    if (tooltipData.showBottomArrow) {
+      final recDiff = rect.right - rect.left;
+      final path = Path()
+        ..moveTo(rect.left + recDiff / 4, rect.bottom - 3)
+        ..lineTo(rect.right - recDiff / 4, rect.bottom - 3)
+        ..lineTo(
+          rect.left + (rect.right - rect.left) / 2,
+          rect.bottom + (rect.bottom - rect.top) / 5,
+        )
+        ..close();
+
+      canvasWrapper.drawPath(path, _bgTouchTooltipPaint);
+    }
   }
 
   @visibleForTesting
