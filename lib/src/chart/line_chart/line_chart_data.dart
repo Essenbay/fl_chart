@@ -1017,6 +1017,9 @@ abstract class FlLineLabel with EquatableMixin {
     required this.padding,
     required this.style,
     required this.alignment,
+    required this.margin,
+    required this.backgroundColor,
+    required this.borderRadius,
   });
 
   /// Determines showing label or not.
@@ -1031,6 +1034,15 @@ abstract class FlLineLabel with EquatableMixin {
   /// Aligns the text on the line.
   final Alignment alignment;
 
+  /// Outer spaces around the drawing text.
+  final EdgeInsetsGeometry margin;
+
+  /// Background color of rectangle around label
+  final Color? backgroundColor;
+
+  /// Border radius of rectangle around label
+  final Radius borderRadius;
+
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
@@ -1038,6 +1050,9 @@ abstract class FlLineLabel with EquatableMixin {
         padding,
         style,
         alignment,
+        borderRadius,
+        backgroundColor,
+        margin,
       ];
 }
 

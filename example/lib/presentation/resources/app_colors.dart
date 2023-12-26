@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = contentColorCyan;
   static const Color menuBackground = Color(0xFF090912);
   static const Color itemsBackground = Color(0xFF1B2339);
   static const Color pageBackground = Color(0xFF282E45);
@@ -22,4 +21,37 @@ class AppColors {
   static const Color contentColorPink = Color(0xFFFF3AF2);
   static const Color contentColorRed = Color(0xFFE80054);
   static const Color contentColorCyan = Color(0xFF50E4FF);
+
+  static const Color primary = Color.fromRGBO(139, 67, 235, 1);
+  static const Color primary400 = Color.fromRGBO(145, 84, 226, 1);
+  static const Color primary300 = Color.fromRGBO(181, 137, 238, 1);
+
+  static const Color secondary500 = Color.fromRGBO(144, 186, 248, 1);
+  static const Color secondary200 = Color.fromRGBO(235, 243, 255, 1);
+
+  static const Color white = Colors.white;
+
+  static const Color black = Color.fromRGBO(26, 26, 24, 1);
+  static const Color black400 = Color.fromRGBO(42, 48, 58, 1);
+  static const Color black300 = Color.fromRGBO(58, 58, 38, 1);
+
+  static const Color grey800 = Color.fromRGBO(66, 66, 66, 1);
+  static const Color grey600 = Color.fromRGBO(100, 100, 100, 1);
+  static const Color grey500 = Color.fromRGBO(140, 140, 140, 1);
+  static const Color grey400 = Color.fromRGBO(161, 161, 177, 1);
+  static const Color grey300 = Color.fromRGBO(210, 210, 210, 1);
+  static const Color grey200 = Color.fromRGBO(228, 228, 228, 1);
+  static const Color grey100 = Color.fromRGBO(245, 245, 245, 1);
+
+  static const Color background = Color.fromRGBO(248, 248, 248, 1);
+
+  static const Color border = Color.fromRGBO(0, 0, 0, 0.05);
+
+  static const Color red = Color.fromRGBO(235, 11, 11, 1);
+  static const Color green = Color.fromRGBO(110, 184, 65, 1);
+  static const Color blue600 = Color.fromRGBO(64, 101, 157, 1);
+
+  static const Color blue500 = Color.fromRGBO(53, 125, 234, .3);
+  static const Color blue300 = Color.fromRGBO(53, 125, 234, .15);
+  static const Color blue200 = Color.fromRGBO(204, 224, 255, 1);
 }

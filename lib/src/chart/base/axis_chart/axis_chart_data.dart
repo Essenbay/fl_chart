@@ -1120,6 +1120,9 @@ class HorizontalLineLabel extends FlLineLabel with EquatableMixin {
     EdgeInsets? padding,
     super.style,
     Alignment? alignment,
+    super.backgroundColor,
+    Radius? borderRadius,
+    EdgeInsets? margin,
     super.show = false,
     String Function(HorizontalLine)? labelResolver,
   })  : labelResolver =
@@ -1127,6 +1130,8 @@ class HorizontalLineLabel extends FlLineLabel with EquatableMixin {
         super(
           padding: padding ?? const EdgeInsets.all(6),
           alignment: alignment ?? Alignment.topLeft,
+          borderRadius: borderRadius ?? Radius.zero,
+          margin: margin ?? EdgeInsets.zero,
         );
 
   /// Resolves a label for showing.
@@ -1160,6 +1165,9 @@ class HorizontalLineLabel extends FlLineLabel with EquatableMixin {
         padding,
         style,
         alignment,
+        margin,
+        backgroundColor,
+        borderRadius,
       ];
 }
 
@@ -1173,22 +1181,20 @@ class VerticalLineLabel extends FlLineLabel with EquatableMixin {
   /// [show] determines showing label or not.
   VerticalLineLabel({
     EdgeInsets? padding,
-    TextStyle? style,
+    super.style,
     Alignment? alignment,
-    bool? show,
+    super.backgroundColor,
+    Radius? borderRadius,
+    EdgeInsets? margin,
+    super.show = false,
     String Function(VerticalLine)? labelResolver,
   })  : labelResolver =
             labelResolver ?? VerticalLineLabel.defaultLineLabelResolver,
         super(
-          show: show ?? false,
           padding: padding ?? const EdgeInsets.all(6),
-          style: style ??
-              const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-          alignment: alignment ?? Alignment.bottomRight,
+          alignment: alignment ?? Alignment.topLeft,
+          borderRadius: borderRadius ?? Radius.zero,
+          margin: margin ?? EdgeInsets.zero,
         );
 
   /// Resolves a label for showing.

@@ -267,9 +267,9 @@ abstract class AxisChartPainter<D extends AxisChartData>
 
         if (line.label.show) {
           final label = line.label;
-          final style =
-              TextStyle(fontSize: 11, color: line.color).merge(label.style);
+          final style = const TextStyle(fontSize: 11).merge(label.style);
           final padding = label.padding as EdgeInsets;
+          final margin = label.margin as EdgeInsets;
 
           final span = TextSpan(
             text: label.labelResolver(line),
@@ -280,20 +280,36 @@ abstract class AxisChartPainter<D extends AxisChartData>
             text: span,
             textDirection: TextDirection.ltr,
           );
+
           // ignore: cascade_invocations
           tp.layout();
 
-          canvasWrapper.drawText(
-            tp,
-            label.alignment.withinRect(
-              Rect.fromLTRB(
-                from.dx + padding.left,
-                from.dy - padding.bottom - tp.height,
-                to.dx - padding.right - tp.width,
-                to.dy + padding.top,
+          //Draw background
+
+          canvasWrapper
+            ..drawRRect(
+              RRect.fromLTRBR(
+                from.dx + margin.left,
+                from.dy - padding.top - (tp.height / 2) + margin.top,
+                tp.width + padding.right * 2 + margin.left,
+                to.dy + (tp.height / 2) + padding.bottom + margin.top,
+                line.label.borderRadius,
               ),
-            ),
-          );
+              Paint()
+                ..style = PaintingStyle.fill
+                ..color = line.label.backgroundColor ?? Colors.transparent,
+            )
+            ..drawText(
+              tp,
+              label.alignment.withinRect(
+                Rect.fromLTRB(
+                  from.dx + padding.left + margin.left,
+                  from.dy - padding.bottom - tp.height + margin.top,
+                  to.dx - padding.right - tp.width - margin.right,
+                  to.dy + padding.top + margin.bottom,
+                ),
+              ),
+            );
         }
       }
     }

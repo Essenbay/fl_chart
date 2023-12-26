@@ -1,8 +1,6 @@
+import 'package:fl_chart_app/examle_chart.dart';
 import 'package:fl_chart_app/presentation/resources/app_resources.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'presentation/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,19 +11,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: AppTexts.appName,
       theme: ThemeData(
         brightness: Brightness.dark,
         useMaterial3: true,
-        textTheme: GoogleFonts.assistantTextTheme(
-          Theme.of(context).textTheme.apply(
-                bodyColor: AppColors.mainTextColor3,
-              ),
-        ),
         scaffoldBackgroundColor: AppColors.pageBackground,
       ),
-      routerConfig: appRouterConfig,
+      home: Scaffold(
+          backgroundColor: AppColors.white,
+          body: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+              child: LinearChartWidget(
+                data: [
+                  MeasureModel(dateTime: DateTime.now(), value: 59),
+                  MeasureModel(
+                      dateTime: DateTime.now().add(const Duration(days: 1)),
+                      value: 59),
+                  MeasureModel(
+                      dateTime: DateTime.now().add(const Duration(days: 2)),
+                      value: 60),
+                ],
+                measures: 'kg',
+                horizontalTarget: 50,
+              ),
+            ),
+          )),
     );
   }
 }
